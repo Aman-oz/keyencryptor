@@ -48,6 +48,6 @@ dependencies {
 
     implementation ("com.cossacklabs.com:themis:0.13.1")
 
-    //implementation("com.github.Aman-oz:api_shield:v1.0.4")
+    implementation("com.github.Aman-oz:keyencryptor:v1.0.2")
 //    implementation(project (":encryptor"))
 }

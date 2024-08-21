@@ -8,6 +8,21 @@ import com.cossacklabs.themis.SecureCellException
 import com.cossacklabs.themis.SymmetricKey
 
 class DecryptionManager {
+
+    fun runDecryption(encryptedApiKey: String, base64Key: String): String? {
+
+        return try {
+            val key = Base64.decode(base64Key, Base64.DEFAULT)
+            val decryptedApiKey = decrypt(encryptedApiKey, key)
+            println("Decrypted API Key: $decryptedApiKey")
+            decryptedApiKey
+
+        } catch (e: DecryptionException) {
+            Log.e("DecryptionProject", "Decryption error: ${e.message}")
+            null
+        }
+    }
+
     @Throws(DecryptionException::class)
     fun decrypt(encryptedApiKey: String, key: ByteArray): String? {
         return try {
@@ -20,21 +35,6 @@ class DecryptionManager {
             throw DecryptionException("Decryption failed: ${e.message}")
         } catch (e: Exception) {
             throw DecryptionException("Unexpected error during decryption: ${e.message}")
-        }
-    }
-
-    fun runDecryption(encryptedApiKey: String, base64Key: String): String? {
-        val decryptionManager = DecryptionManager()
-
-        return try {
-            val key = Base64.decode(base64Key, Base64.DEFAULT)
-            val decryptedApiKey = decryptionManager.decrypt(encryptedApiKey, key)
-            println("Decrypted API Key: $decryptedApiKey")
-            decryptedApiKey
-
-        } catch (e: DecryptionException) {
-            Log.e("DecryptionProject", "Decryption error: ${e.message}")
-            null
         }
     }
 

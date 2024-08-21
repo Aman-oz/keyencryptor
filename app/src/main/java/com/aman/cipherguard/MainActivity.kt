@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.aman.cipherguard.managers.DecryptionManager
-import com.aman.cipherguard.managers.EncryptionManager
+import com.aman.encryptor.managers.EncryptionManager
 
 class MainActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.java.simpleName
@@ -22,9 +22,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val apiKey = "xrderxyx"
+
         val encryptionManager = EncryptionManager()
         val decryptionManager = DecryptionManager()
-        val apiKey = "xrderxyx"
+
+
         val (encryptedApiKey, key) = encryptionManager.runEncryption(apiKey)
 
         Log.d(TAG, "**********************")
