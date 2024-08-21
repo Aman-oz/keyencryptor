@@ -27,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -49,5 +49,5 @@ dependencies {
     implementation ("com.cossacklabs.com:themis:0.13.1")
 
     //implementation("com.github.Aman-oz:api_shield:v1.0.4")
-    implementation(project (":encryptor"))
+//    implementation(project (":encryptor"))
 }
